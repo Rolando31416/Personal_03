@@ -1,0 +1,26 @@
+[
+  {
+    "username": "marlon",
+    "password": "123456",
+    "email": "example@example.com",
+    "fechaNacimiento": "1990-01-01",
+    "fechaCreacion": "2024-01-01",
+    "fechaModificacion": "2024-01-02"
+  },
+  {
+    "username": "nuevoUsuario",
+    "password": "password123",
+    "email": "usuario@ejemplo.com",
+    "fechaNacimiento": "2025-01-07T06:29:25.242Z",
+    "fechaCreacion": "2025-01-07T06:29:25.242Z",
+    "fechaModificacion": "2025-01-07T06:29:25.242Z"
+  },
+  {
+    "username": "x",
+    "password": "x",
+    "email": "usuarioxejemplocom",
+    "fechaNacimiento": "2025-01-07T06:32:51.515Z",
+    "fechaCreacion": "2025-01-07T06:32:51.515Z",
+    "fechaModificacion": "2025-01-07T06:32:51.515Z"
+  }
+]
