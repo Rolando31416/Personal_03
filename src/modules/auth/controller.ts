@@ -10,19 +10,16 @@ export const RegisterController = async (req: Request) => {
             throw new Error ("Campos : username, password, email, fechaNacimiento son obligatorios");
         }
 
-        const _fechaNacimiento = new Date();
-        const _fechaCreacion= new Date(); 
-        const _fechaModificacion= new Date();
+const user: UserI = {
+    username,
+    password,
+    email,
+    fechaNacimiento,
+    fechaCreacion: new Date(),
+    fechaModificacion: new Date(),
+  };
 
-
-        return await new AuthServices().registerService(
-            username, 
-            password, 
-            email,
-            _fechaNacimiento, 
-            _fechaCreacion, 
-            _fechaModificacion
-        );
+  return await new AuthServices().registerService(user);
 
     } catch (error) {
         throw error

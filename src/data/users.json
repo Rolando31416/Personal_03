@@ -22,5 +22,21 @@
     "fechaNacimiento": "2025-01-08T00:05:33.137Z",
     "fechaCreacion": "2025-01-08T00:05:33.137Z",
     "fechaModificacion": "2025-01-08T00:05:33.137Z"
+  },
+  {
+    "username": "Cecile",
+    "password": "Cecile",
+    "email": "usuarioxejemplo@xyz.com",
+    "fechaNacimiento": "1999-12-31",
+    "fechaCreacion": "2025-01-08T05:19:51.545Z",
+    "fechaModificacion": "2025-01-08T05:19:51.545Z"
+  },
+  {
+    "username": "Karina",
+    "password": "Karina",
+    "email": "k0352ejemplo@xyz.com",
+    "fechaNacimiento": "1999-02-15",
+    "fechaCreacion": "2025-01-08T08:53:24.364Z",
+    "fechaModificacion": "2025-01-08T08:53:24.364Z"
   }
 ]

@@ -8,6 +8,7 @@ import AuthRepository from "./repository";
 import fs from "fs/promises";
 import path from "path";
 import jwt from "jsonwebtoken";
+import { UserI } from "../../interfaces/Auth.interface";
 
 const userData = path.join("src", "data", "users.json");
 
@@ -17,22 +18,21 @@ export class AuthServices {
     this._authRepository = new AuthRepository();
   }
 
+  // objeto segun interfase y enviarlo como parametro 
+  // async registerService(username: string, password: string, email: string, fechaNacimiento: Date, fechaCreacion: Date, fechaModificacion: Date) {
 
-  // objeto segun ingefase y enviarlo como parametro 
-
-  async registerService(username: string, password: string, email: string, fechaNacimiento: Date, fechaCreacion: Date, fechaModificacion: Date) {
-    const existingUser = await this._authRepository.findByUsername(username);
+  async registerService(user: UserI) {
+    // Verificar si el usuario ya existe
+    const existingUser = await this._authRepository.findByUsername(user.username);
     if (existingUser) {
       throw new Error("El usuario ya existe");
     }
-    const newUser = await this._authRepository.createUser({
-      username,
-      password,
-      email,      
-      fechaNacimiento,
-      fechaCreacion,
-      fechaModificacion    
-    });
+  
+    // Crear el nuevo usuario
+    // const newUser = await this._authRepository.createUser({ username,password,email,fechaNacimiento,fechaCreacion,fechaModificacion});    
+    const newUser = await this._authRepository.createUser(user);
+  
+    // Retornar respuesta
     return HttpResponse.response(
       CodesHttpEnum.created,
       newUser,
