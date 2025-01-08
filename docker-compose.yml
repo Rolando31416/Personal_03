@@ -12,4 +12,5 @@ services:
     volumes:
       - ./docker/postgres/data:/var/lib/postgresql/data
     ports:
-      - 5432:5432
+      - 4000:5432
+      

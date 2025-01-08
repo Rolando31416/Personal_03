@@ -18,6 +18,8 @@ export class AuthServices {
   }
 
 
+  // objeto segun ingefase y enviarlo como parametro 
+
   async registerService(username: string, password: string, email: string, fechaNacimiento: Date, fechaCreacion: Date, fechaModificacion: Date) {
     const existingUser = await this._authRepository.findByUsername(username);
     if (existingUser) {
@@ -38,6 +40,23 @@ export class AuthServices {
     );
   }
 
+  // 1645
+  async getUserByUsername(username: string) {
+    const allUsers = await this._authRepository.readUsers(); // Leer el archivo JSON
+    const user = allUsers.find((user) => user.username === username);
+  
+    if (!user) {
+      throw new Error("Usuario no encontrado");
+    }
+  
+    return HttpResponse.response(
+      CodesHttpEnum.ok,
+      user,
+      "Usuario encontrado con éxito"
+    );
+  }
+
+  
   async loginService(username: string, password: string) {
     const allUser = await this._authRepository.readUsers();
     const existUser = allUser.find((user) => user.username == username);

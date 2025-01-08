@@ -4,11 +4,34 @@ import { PORT } from "./environments/env";
 // ? Rutas del proyecto
 import authRoutes from "./modules/auth/routes";
 import { ValidationError } from "express-validation";
+import db from "./config/dbOrm"
 
 const app = express();
 
 // ? Configuracion de JSON para del proyecto 
 app.use(express.json());
+
+// ? coneccion con la BD 
+
+
+async function main() {
+try {
+  await db.authenticate();
+  await db.sync({force:true}); // ! La sincronizacion con el force entrue, puede eliminar registros o columnas
+  console.log('Connection establecida con la BD.');
+} catch (error) {
+  console.error('Ocurrio un error al conectarse co la BD', error);
+ }
+}
+main()
+
+
+//try {
+//  await sequelize.authenticate();
+//  console.log('Connection has been established successfully.');
+//} catch (error) {
+//  console.error('Unable to connect to the database:', error);
+//}
 
 const prefix: string = "/api";
 
