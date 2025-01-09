@@ -38,5 +38,21 @@
     "fechaNacimiento": "1999-02-15",
     "fechaCreacion": "2025-01-08T08:53:24.364Z",
     "fechaModificacion": "2025-01-08T08:53:24.364Z"
+  },
+  {
+    "username": "Sofia",
+    "password": "Sofia",
+    "email": "S12345ejemplo@xyz.com",
+    "fechaNacimiento": "1998-08-15",
+    "fechaCreacion": "2025-01-08T17:52:07.352Z",
+    "fechaModificacion": "2025-01-08T17:52:07.352Z"
+  },
+  {
+    "username": "Julieth",
+    "password": "$2b$10$ao9orh5GZPr8A9ODmD6jauEGmV4jTLEtgDG3Bs5eZZuxPxTqn27da",
+    "email": "Julieth@xyz.com",
+    "fechaNacimiento": "1998-08-15",
+    "fechaCreacion": "2025-01-08T23:57:34.110Z",
+    "fechaModificacion": "2025-01-08T23:57:34.110Z"
   }
 ]

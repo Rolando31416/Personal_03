@@ -29,28 +29,93 @@ export default class AuthRepository {
         const users = await this.readUsers();
         return users.find((user) => user.username === username);
     }
-
 }
 
 /*
 
+******************************************************
+*
+******************************************************
+
 post http://localhost:3000/api/auth/login 
 {
-    "username": "marlon",
-    "password": "1995"
+    "username": "Julieth",
+    "password": "Julieth24444"
 }
+
+{
+    "code": 200,
+    "data": {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lVXNlciI6Ik1pZ3VlbCBCdXJnb3MiLCJtYWlsVXNlciI6Im1pZ2J1cmxAZ21haWwuY29tIiwiaWF0IjoxNzM2MzgwODIyLCJleHAiOjE3MzYzODQ0MjJ9.9ng-LULinP8mRvsIZsnoVi_YaZzJxEjMzHSTQs0YaRw"
+    },
+    "message": "Usuario Validado"
+}
+
+
+******************************************************
+*
+******************************************************
+
 
 post http://localhost:3000/api/auth/register
 
 Body / row 
 
 {
-  "username": "x",
-  "password": "x",
-  "email": "usuarioxejemplocom",
-  "fechaNacimiento": "1968-08-16"
+  "username": "Julieth",
+  "password": "Julieth24444",
+  "email": "Julieth@xyz.com",
+  "fechaNacimiento": "1998-08-15"
 }
 
+201 Created
+{
+    "code": 201,
+    "data": {
+        "username": "Julieth",
+        "password": "$2b$10$ao9orh5GZPr8A9ODmD6jauEGmV4jTLEtgDG3Bs5eZZuxPxTqn27da",
+        "email": "Julieth@xyz.com",
+        "fechaNacimiento": "1998-08-15",
+        "fechaCreacion": "2025-01-08T23:57:34.110Z",
+        "fechaModificacion": "2025-01-08T23:57:34.110Z"
+    },
+    "message": "Usuario creado con éxito"
+}
+
+******************************************************
+*
+******************************************************
+
+GET http://localhost:3000/api/auth/users/Julieth
+
+
+{
+    "code": 200,
+    "data": {
+        "username": "Julieth",
+        "password": "$2b$10$ao9orh5GZPr8A9ODmD6jauEGmV4jTLEtgDG3Bs5eZZuxPxTqn27da",
+        "email": "Julieth@xyz.com",
+        "fechaNacimiento": "1998-08-15",
+        "fechaCreacion": "2025-01-08T23:57:34.110Z",
+        "fechaModificacion": "2025-01-08T23:57:34.110Z"
+    },
+    "message": "Usuario encontrado con éxito"
+}
+
+******************************************************
+*
+******************************************************
+
+JSON
+
+  {
+    "username": "Julieth",
+    "password": "$2b$10$ao9orh5GZPr8A9ODmD6jauEGmV4jTLEtgDG3Bs5eZZuxPxTqn27da",
+    "email": "Julieth@xyz.com",
+    "fechaNacimiento": "1998-08-15",
+    "fechaCreacion": "2025-01-08T23:57:34.110Z",
+    "fechaModificacion": "2025-01-08T23:57:34.110Z"
+  }
 
 
 */

@@ -9,6 +9,11 @@ import fs from "fs/promises";
 import path from "path";
 import jwt from "jsonwebtoken";
 import { UserI } from "../../interfaces/Auth.interface";
+import bcrypt from "bcrypt";
+
+
+// npm install bcrypt
+// npm install --save-dev @types/bcrypt
 
 const userData = path.join("src", "data", "users.json");
 
@@ -28,6 +33,13 @@ export class AuthServices {
       throw new Error("El usuario ya existe");
     }
   
+   // Hashear la contraseña del usuario
+   const saltRounds = 10; // Número de rondas de sal para el hash
+   const hashedPassword = await bcrypt.hash(user.password, saltRounds);
+   
+   // Reemplazar la contraseña en texto plano por la contraseña hasheada
+   user.password = hashedPassword;
+
     // Crear el nuevo usuario
     // const newUser = await this._authRepository.createUser({ username,password,email,fechaNacimiento,fechaCreacion,fechaModificacion});    
     const newUser = await this._authRepository.createUser(user);
@@ -55,7 +67,6 @@ export class AuthServices {
       "Usuario encontrado con éxito"
     );
   }
-
   
   async loginService(username: string, password: string) {
     const allUser = await this._authRepository.readUsers();
@@ -65,9 +76,15 @@ export class AuthServices {
       throw new Error("El usuario no existe");
     }
 
-    if (existUser.password !== password) {
-      throw new Error("Clave incorrecta");
+    // Verificar la contraseña
+    const isPasswordValid = await bcrypt.compare(password, existUser.password);
+    if (!isPasswordValid) {
+          throw new Error("Clave incorrecta");
     }
+
+    //if (existUser.password !== password) {
+    //  throw new Error("Clave incorrecta");
+    //}
 
     const token = jwt.sign(
       { nameUser: "Miguel Burgos", mailUser: "migburl@gmail.com" },
